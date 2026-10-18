@@ -1,16 +1,21 @@
 #!/bin/bash
-# SessionStart hook for Claude Code on the web (cloud sessions only).
-# A cloud session starts from a fresh clone, so it installs npm dependencies
-# and, when the repo's Playwright expects a newer headless-shell revision than
-# the one pre-installed in the sandbox, links the pre-installed build in so
-# generate-pdf.mjs can render CVs. Local machines are left alone.
+# SessionStart hook.
+# Every session: installs the git privacy guard (pre-commit + pre-push), which
+# blocks personal files, the candidate's own details and API keys from being
+# committed to this public fork.
+# Cloud sessions only (Claude Code on the web): a fresh clone has no
+# node_modules, so it installs npm dependencies and, when the repo's Playwright
+# expects a newer headless-shell revision than the one pre-installed in the
+# sandbox, links the pre-installed build in so generate-pdf.mjs can render CVs.
 set -euo pipefail
+
+cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/../..}"
+
+bash .claude/hooks/git-privacy-guard.sh install || true
 
 if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
   exit 0
 fi
-
-cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/../..}"
 
 npm install --ignore-scripts --no-audit --no-fund --loglevel=error
 
