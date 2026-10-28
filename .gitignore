@@ -279,3 +279,6 @@ data/interview-prep/
 .next/
 web/.next/
 web/out/
+
+# Fork-local path declarations are committed in this fork (see config/local-paths.example.txt).
+!config/local-paths.txt

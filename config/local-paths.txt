@@ -1,0 +1,3 @@
+# Fork-local files this checkout owns (see config/local-paths.example.txt).
+# Paths only; no personal data.
+.devcontainer/

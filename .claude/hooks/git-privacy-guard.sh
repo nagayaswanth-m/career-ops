@@ -34,7 +34,7 @@ fi
 
 # Paths that belong to the user layer (DATA_CONTRACT.md). Shipped placeholders
 # (.gitkeep, README.md, *.template.md, *.example.*) are allowed through.
-personal_path_re='^(cv\.md|article-digest\.md|portals\.yml|voice-dna\.md|\.career-ops-data|\.env(\..*)?|config/(profile\.yml|cv-facts\.json|benchmarks\.yml|plugins\.yml|local-paths\.txt)|modes/_(profile|custom|brief)\.md|(data|reports|output|jds|documents|writing-samples|interview-prep|batch/tracker-additions|local)/.*)$'
+personal_path_re='^(cv\.md|article-digest\.md|portals\.yml|voice-dna\.md|\.career-ops-data|\.env(\..*)?|config/(profile\.yml|cv-facts\.json|benchmarks\.yml|plugins\.yml)|modes/_(profile|custom|brief)\.md|(data|reports|output|jds|documents|writing-samples|interview-prep|batch/tracker-additions|local)/.*)$'
 allowed_path_re='(^|/)(\.gitkeep|README\.md)$|\.template\.md$|\.example\.'
 secret_file_re='\.(pem|key|p12|pfx|keystore)$|(^|/)id_(rsa|ed25519|ecdsa)$'
 
