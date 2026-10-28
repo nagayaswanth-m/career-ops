@@ -7,6 +7,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
+sudo apt-get update -qq && sudo apt-get install -y -qq unzip > /dev/null
 npm install --no-audit --no-fund
 npx playwright install --with-deps chromium
 (cd web && npm ci --no-audit --no-fund)
