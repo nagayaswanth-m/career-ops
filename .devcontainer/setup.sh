@@ -12,9 +12,10 @@ npm install --no-audit --no-fund
 npx playwright install --with-deps chromium
 (cd web && npm ci --no-audit --no-fund)
 bash .claude/hooks/git-privacy-guard.sh install
+bash .claude/hooks/attach-data-repo.sh
 
 echo
 echo "career-ops is ready."
-echo "Personal files (cv.md, config/profile.yml, data/, reports/, ...) are gitignored:"
-echo "upload or unzip them into this folder; they stay in this private codespace."
+echo "Personal files come from your private career-ops-data repo (cloned next to this one)."
+echo "Commit and push changes there: cd ../career-ops-data && git add -A && git commit -m update && git push"
 echo "Start the dashboard with:  bash .devcontainer/start-ui.sh"

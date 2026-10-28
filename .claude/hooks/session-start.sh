@@ -2,7 +2,8 @@
 # SessionStart hook.
 # Every session: installs the git privacy guard (pre-commit + pre-push), which
 # blocks personal files, the candidate's own details and API keys from being
-# committed to this public fork.
+# committed to this public fork, and attaches the private career-ops-data
+# repo as the data root when it is reachable (.claude/hooks/attach-data-repo.sh).
 # Cloud sessions only (Claude Code on the web): a fresh clone has no
 # node_modules, so it installs npm dependencies and, when the repo's Playwright
 # expects a newer headless-shell revision than the one pre-installed in the
@@ -12,6 +13,7 @@ set -euo pipefail
 cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/../..}"
 
 bash .claude/hooks/git-privacy-guard.sh install || true
+bash .claude/hooks/attach-data-repo.sh || true
 
 if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
   exit 0

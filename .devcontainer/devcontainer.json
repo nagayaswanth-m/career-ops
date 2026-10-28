@@ -3,7 +3,9 @@
   "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
   "postCreateCommand": "bash .devcontainer/setup.sh",
   "postAttachCommand": "echo 'career-ops: run  bash .devcontainer/start-ui.sh  then open the Ports tab (port 3000). Keep the port Private.'",
-  "forwardPorts": [3000],
+  "forwardPorts": [
+    3000
+  ],
   "portsAttributes": {
     "3000": {
       "label": "career-ops web",
@@ -12,5 +14,16 @@
   },
   "hostRequirements": {
     "cpus": 2
+  },
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "nagayaswanth-m/career-ops-data": {
+          "permissions": {
+            "contents": "write"
+          }
+        }
+      }
+    }
   }
 }
